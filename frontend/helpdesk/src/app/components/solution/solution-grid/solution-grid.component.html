@@ -3,6 +3,6 @@
         <app-solution-card *ngFor="let ticket of ELEMENT_DATA_TICKETS; let i = index"
                            [ticket]="ticket" ></app-solution-card>
     </div>
-    <app-solution-detail></app-solution-detail>
+    <router-outlet></router-outlet>
 </div>
 
