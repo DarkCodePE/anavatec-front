@@ -3,6 +3,7 @@ import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {ProductService} from "../../../../services/product.service";
 import {FormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import Swal from 'sweetalert2';
+import {ProductStore} from "../../../../store/product.store";
 
 @Component({
   selector: 'app-product-create',
@@ -16,6 +17,7 @@ export class ProductCreateComponent implements OnInit {
   private createProductLoading: boolean;
   constructor(
       public productDialog: MatDialogRef<ProductCreateComponent>,
+      private store:ProductStore,
       public dialog: MatDialog,
       public formBuilder: FormBuilder,
       public service: ProductService
@@ -65,6 +67,7 @@ export class ProductCreateComponent implements OnInit {
       next: (res: any) => {
         this.createProductLoading = false;
         this.productDialog.close(true);
+        this.store.saveState(res);
       },
       error: (err: any) => {
         this.messageError(err.message);
