@@ -58,6 +58,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { SolutionListComponent } from './components/solution/solution-list/solution-list.component';
 import { SolutionGridComponent } from './components/solution/solution-grid/solution-grid.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
+import { TicketSolutionComponent } from './components/chamado/ticket-solution/ticket-solution.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     SolutionDetailComponent,
     LoaderComponent,
     SolutionListComponent,
-    SolutionGridComponent
+    SolutionGridComponent,
+    TicketSolutionComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {Solution} from "../../../models/Product";
 import {ProductService} from "../../../services/product.service";
 import {MatDialog} from "@angular/material/dialog";
+import {SolutionStore} from "../../../store/solution.store";
 
 @Component({
   selector: 'app-solution-list',
@@ -15,6 +16,7 @@ export class SolutionListComponent implements OnInit {
   ELEMENT_DATA_SOLUTIONS: Solution[] = [];
   constructor( private service: ProductService,
                private _sanitizer: DomSanitizer,
+               private solutionStore: SolutionStore,
                public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -26,8 +28,8 @@ export class SolutionListComponent implements OnInit {
   }
   findAllSolutions(): void {
     this.service.findAllSolutions().subscribe(resp => {
-      console.log(resp)
       this.ELEMENT_DATA_SOLUTIONS = resp;
+      //this.solutionStore.saveState(resp);
       //this.dataSource.paginator = this.paginator;
     })
   }

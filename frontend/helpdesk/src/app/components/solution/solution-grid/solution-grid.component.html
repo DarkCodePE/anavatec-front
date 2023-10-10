@@ -3,6 +3,9 @@
         <app-solution-card *ngFor="let ticket of ELEMENT_DATA_TICKETS; let i = index"
                            [ticket]="ticket" ></app-solution-card>
     </div>
-    <router-outlet></router-outlet>
+   <div>
+      <!-- {{ solutions$ | async | json }}-->
+       <app-solution-detail *ngFor="let solution of (solutions$ | async); let i = index" [solution]="solution"></app-solution-detail>
+   </div>
 </div>
 

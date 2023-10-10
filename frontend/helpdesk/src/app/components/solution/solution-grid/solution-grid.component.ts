@@ -5,6 +5,8 @@ import {MatDialog} from "@angular/material/dialog";
 import {Solution} from "../../../models/Product";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Chamado} from "../../../models/chamado";
+import {Observable} from "rxjs";
+import {SolutionStore} from "../../../store/solution.store";
 
 @Component({
   selector: 'app-solution-grid',
@@ -13,9 +15,11 @@ import {Chamado} from "../../../models/chamado";
 })
 export class SolutionGridComponent implements OnInit {
   ELEMENT_DATA_TICKETS: Chamado[] = [];
+  solutions$:Observable<Solution[]> = this.solutionStore.state$;
   constructor(private service: ProductService,
               private _sanitizer: DomSanitizer,
               public dialog: MatDialog,
+              private solutionStore: SolutionStore,
               private route: ActivatedRoute,
               private router: Router  ) { }
 

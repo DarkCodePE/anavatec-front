@@ -11,4 +11,6 @@ export interface Chamado {
     nomeCliente: string;
     nomeTecnico: string;
     productId: number;
+    isSolution:boolean;
+    solution:boolean;
 }

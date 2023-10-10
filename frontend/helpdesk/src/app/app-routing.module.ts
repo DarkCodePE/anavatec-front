@@ -45,7 +45,6 @@ const routes: Routes = [
     {path: 'graficos', component: ChartComponent},
     {path: 'soluciones', component: SolutionComponent},
     { path: 'soluciones/producto/:id', component: SolutionGridComponent },
-    { path: 'soluciones/detalle/:id', component: SolutionDetailComponent},
   ] }
 ];
 

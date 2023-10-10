@@ -34,10 +34,8 @@ export class ProductService {
         const blob = new Blob([JSON.stringify(productRequestDTO)], { type: 'application/json' });
         body.append("productRequestDTO", blob);
         body.append("file",file);
-        console.log(file);
-        console.log(body);
         const headers = new HttpHeaders();
-        headers.append('Content-Type', 'application/json'); //
+        headers.append('Content-Type', 'application/json');
         return this.http.post<Product[]>(`${API_CONFIG.baseUrl}/product/create`, body, { headers: headers });
     }
 

@@ -3,6 +3,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Chamado } from 'src/app/models/chamado';
 import { ChamadoService } from 'src/app/services/chamado.service';
+import {ProductCreateComponent} from "../../product/modal/product-create/product-create.component";
+import {MatDialog} from "@angular/material/dialog";
+import {TicketSolutionComponent} from "../ticket-solution/ticket-solution.component";
 
 @Component({
   selector: 'app-chamado-list',
@@ -22,7 +25,8 @@ export class ChamadoListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
-    private service: ChamadoService
+    private service: ChamadoService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -84,6 +88,18 @@ export class ChamadoListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
-
+  OpenModal() {
+    this.dialog.open(TicketSolutionComponent, {
+      panelClass: 'custom-modalbox',
+      width: '700px',
+      height: 'auto',
+      maxHeight: '88vh',
+    }).afterClosed()
+        .subscribe((result?: boolean) => {
+          if (result===true) {
+            console.log(result)
+          }
+        });
+  }
 
 }

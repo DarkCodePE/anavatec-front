@@ -1,5 +1,5 @@
 <div class="job-item">
-    <a class="job-inner align-items-center"  [routerLink]="['/soluciones/detalle', ticket.id]">
+    <a class="job-inner align-items-center" (click)="findTicketsByProductId(ticket.id)">
         <div class="job-inner-left">
             <div class="title-job">
         <span

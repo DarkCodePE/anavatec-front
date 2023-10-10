@@ -28,7 +28,9 @@ export class ChamadoCreateComponent implements OnInit {
     cliente: '',
     nomeCliente: '',
     nomeTecnico: '',
-    productId: 0
+    productId: 0,
+    isSolution: false,
+    solution:false,
   }
 
   clientes: Cliente[] = [];
@@ -63,11 +65,11 @@ export class ChamadoCreateComponent implements OnInit {
   create(): void {
     this.chamadoService.create(this.chamado).subscribe({
       next: () => {
-      this.toastService.success('Ticket creada exitosamente', 'Nuevo Ticket');
-      this.router.navigate(['chamados']);
+        this.toastService.success('Ticket creada exitosamente', 'Nuevo Ticket');
+        this.router.navigate(['chamados']);
       },
-    error: (erro) => {
-      this.toastService.error(erro.error.error);
+    error: (e) => {
+      this.toastService.error(e.error.error);
     } 
   })
   }

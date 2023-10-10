@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Chamado } from '../models/chamado';
 import { API_CONFIG } from '../config/api.config';
+import {Solution, SolutionState} from "../models/Product";
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +26,16 @@ export class ChamadoService {
 
   update(chamado: Chamado): Observable<Chamado> {
     return this.http.put<Chamado>(`${API_CONFIG.baseUrl}/chamados/${chamado.id}`, chamado);
+  }
+
+  createSolution(solutionRequestDTO: any, file:File): Observable<Solution[]> {
+    console.log(solutionRequestDTO);
+    let body = new FormData();
+    const blob = new Blob([JSON.stringify(solutionRequestDTO)], { type: 'application/json' });
+    body.append("solutionRequestDTO", blob);
+    body.append("file", file);
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post<Solution[]>(`${API_CONFIG.baseUrl}/solution/create`, body, { headers: headers });
   }
 }

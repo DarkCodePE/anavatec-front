@@ -62,7 +62,6 @@ export class ProductCreateComponent implements OnInit {
 
   enviar() {
     this.createProductLoading = true;
-    console.log(this.file)
     this.service.create(this.productFormGroup.value, this.file).subscribe({
       next: (res: any) => {
         this.createProductLoading = false;

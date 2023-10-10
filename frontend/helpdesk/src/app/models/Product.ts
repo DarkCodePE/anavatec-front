@@ -17,5 +17,11 @@ export interface Solution {
     productId: number;
     title: string;
     summary: string;
-    imageUrl: boolean;
+    imageUrl: string;
+}
+export interface SolutionState {
+    ticketId: number;
+    title: string;
+    summary: string;
+    file: string;
 }
