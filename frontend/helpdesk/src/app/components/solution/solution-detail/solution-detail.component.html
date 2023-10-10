@@ -1,4 +1,11 @@
 
 <div>
-    <h3>{{ solution.title }}</h3>
+    {{ solution | json}}
+    <h2>{{ solution.title }}</h2>
+    <p>{{solution.summary}}</p>
+    <figure class="img-solution-container">
+        <img
+            [src]="decodeImage(solution.imageUrl)"
+            alt="{{solution.title}}">
+    </figure>
 </div>

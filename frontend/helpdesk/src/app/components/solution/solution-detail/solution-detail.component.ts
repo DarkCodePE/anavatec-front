@@ -29,4 +29,8 @@ export class SolutionDetailComponent implements OnInit {
     const ticketID = this.route.snapshot.paramMap.get('id');
     //this.findTicketsByProductId(Number(ticketID));
   }
+  decodeImage(base64Image: string){
+    return this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'
+        + base64Image);
+  }
 }
