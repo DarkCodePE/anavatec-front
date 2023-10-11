@@ -7,7 +7,7 @@ import {Injectable} from "@angular/core";
 })
 export class ProductStore {
 
-    private state = new BehaviorSubject<Product>({
+    private state = new BehaviorSubject<Product[]>([{
         id: 0,
         sku: '',
         title: '',
@@ -18,13 +18,13 @@ export class ProductStore {
         summary: '',
         price: 0,
         status: false,
-    });
+    }]);
     state$ = this.state.asObservable();
     constructor() {}
-    saveState(state: Product) {
+    saveState(state: Product[]) {
         this.state.next(state);
     }
-    get stateValue(): Product {
+    get stateValue(): Product[] {
         return this.state.getValue();
     }
 }

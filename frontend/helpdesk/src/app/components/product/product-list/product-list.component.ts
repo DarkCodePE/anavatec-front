@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Chamado} from "../../../models/chamado";
-import {Product} from "../../../models/Product";
+import {Product, Solution} from "../../../models/Product";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {ChamadoService} from "../../../services/chamado.service";
@@ -8,13 +8,15 @@ import {ProductService} from "../../../services/product.service";
 import {MatDialog} from "@angular/material/dialog";
 import {ProductCreateComponent} from "../modal/product-create/product-create.component";
 import { DomSanitizer } from '@angular/platform-browser';
+import {Observable} from "rxjs";
+import {ProductStore} from "../../../store/product.store";
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-
+  products$:Observable<Product[]> = this.store.state$;
   ELEMENT_DATA: Product[] = [];
   FILTERED_DATA: Product[] = [];
 
@@ -23,6 +25,7 @@ export class ProductListComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor( private service: ProductService,
+               private store:ProductStore,
                private _sanitizer: DomSanitizer,
                public dialog: MatDialog) { }
 
@@ -56,7 +59,7 @@ export class ProductListComponent implements OnInit {
     }).afterClosed()
         .subscribe((result?: boolean) => {
           if (result===true) {
-            console.log(result)
+            this.findAll();
           }
         });
   }
