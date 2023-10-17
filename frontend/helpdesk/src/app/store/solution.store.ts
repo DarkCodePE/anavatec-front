@@ -13,6 +13,7 @@ export class SolutionStore {
         title: '',
         summary: '',
         imageUrl: '',
+        status: false,
         }]);
     state$ = this.state.asObservable();
     constructor() {}

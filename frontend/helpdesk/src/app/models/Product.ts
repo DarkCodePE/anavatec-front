@@ -18,6 +18,7 @@ export interface Solution {
     title: string;
     summary: string;
     imageUrl: string;
+    status: boolean;
 }
 export interface SolutionState {
     ticketId: number;

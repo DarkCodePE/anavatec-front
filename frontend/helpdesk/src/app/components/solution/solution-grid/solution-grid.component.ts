@@ -30,9 +30,7 @@ export class SolutionGridComponent implements OnInit {
   }
   findTicketsByProductId(productID:number): void {
     this.service.findTicketsByProductId(productID).subscribe(resp => {
-      console.log(resp)
       this.ELEMENT_DATA_TICKETS = resp;
-      //this.dataSource.paginator = this.paginator;
     })
   }
 }

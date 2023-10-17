@@ -15,7 +15,8 @@ import {Chamado} from "../../../models/chamado";
 })
 export class SolutionDetailComponent implements OnInit {
   ELEMENT_DATA_SOLUTIONS: Solution[] = [];
-  @Input() solution: Solution;
+  @Input() solution: Solution | null = null;
+
   constructor(private service: ProductService,
               private _sanitizer: DomSanitizer,
               public dialog: MatDialog,
@@ -26,6 +27,7 @@ export class SolutionDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //validate exist solution
     const ticketID = this.route.snapshot.paramMap.get('id');
     //this.findTicketsByProductId(Number(ticketID));
   }

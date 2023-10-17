@@ -59,6 +59,8 @@ import { SolutionListComponent } from './components/solution/solution-list/solut
 import { SolutionGridComponent } from './components/solution/solution-grid/solution-grid.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
 import { TicketSolutionComponent } from './components/chamado/ticket-solution/ticket-solution.component';
+import {NgApexchartsModule} from "ng-apexcharts";
+import { MetricsComponent } from './components/home/metrics/metrics.component';
 
 @NgModule({
   declarations: [
@@ -87,12 +89,14 @@ import { TicketSolutionComponent } from './components/chamado/ticket-solution/ti
     LoaderComponent,
     SolutionListComponent,
     SolutionGridComponent,
-    TicketSolutionComponent
+    TicketSolutionComponent,
+    MetricsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    NgApexchartsModule,
     // Forms
     FormsModule,
     ReactiveFormsModule,
@@ -123,7 +127,8 @@ import { TicketSolutionComponent } from './components/chamado/ticket-solution/ti
     }),
     NgxMaskModule.forRoot(),
     MatDatepickerModule,
-    MatTooltipModule
+    MatTooltipModule,
+    NgApexchartsModule
   ],
   providers: [AuthInterceptorProvider],
   bootstrap: [AppComponent]

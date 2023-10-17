@@ -10,4 +10,8 @@ h1 {
     border: 1px solid rgb(161, 159, 159);
     padding: 1rem 10%;
     border-radius: 2rem;
+    background: #484c7f;
+    color: white;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
 }

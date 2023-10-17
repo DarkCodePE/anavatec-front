@@ -14,21 +14,31 @@ import {SolutionStore} from "../../../store/solution.store";
 export class SolutionCardComponent implements OnInit {
   @Input() ticket: Chamado;
   ELEMENT_DATA_SOLUTIONS: Solution[] = [];
+  day: string = "";
+  month: string = "";
+  year: string = ""
+  status: boolean;
   constructor(private service: ProductService,
   private solutionStore: SolutionStore,
   private _sanitizer: DomSanitizer,
   public dialog: MatDialog,) { }
 
   ngOnInit(): void {
+    let date: string[] = this.ticket.dataAbertura.split("/");
+    this.day = date[0];
+    this.month= date[1];
+    this.year = date[2];
   }
 
 
   findTicketsByProductId(ticketID:number): void {
     this.service.findSolutionsByTickets(ticketID).subscribe(resp => {
-      console.log("TEST->",ticketID)
       this.ELEMENT_DATA_SOLUTIONS = resp;
       this.solutionStore.saveState(resp);
-      //this.dataSource.paginator = this.paginator;
+      this.status = true;
+    }, error => {
+        this.status = false;
+        //console.log(error)
     })
   }
 }

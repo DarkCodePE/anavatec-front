@@ -20,10 +20,11 @@ export class ProductListComponent implements OnInit {
   ELEMENT_DATA: Product[] = [];
   FILTERED_DATA: Product[] = [];
 
-  displayedColumns = ['sku', 'titulo', 'precio', 'categoria'];
+  displayedColumns = ['Nombre del archivo', 'tipo', 'precio', 'categoria'];
   dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+
   constructor( private service: ProductService,
                private store:ProductStore,
                private _sanitizer: DomSanitizer,
