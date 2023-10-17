@@ -2344,7 +2344,7 @@ body.rtl_mode table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > th
     scroll-behavior: smooth;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    height: 100vh;
+    height: auto;
     -webkit-box-ordinal-group: 4;
     -ms-flex-order: 3;
     order: 3;
