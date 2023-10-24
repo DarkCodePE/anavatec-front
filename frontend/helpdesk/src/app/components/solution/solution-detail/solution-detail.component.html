@@ -1,4 +1,5 @@
-
+<!--{{ $solution | async | json }}-->
+<div *ngIf="($solution | async) as solution">
 <div class="body d-flex py-lg-3 py-md-2"
      *ngIf="solution.title != ''">
     <div class="container-xxl">
@@ -67,7 +68,7 @@
                             <div class="card-body">
                                 <figure class="img-solution-container">
                                     <img style="width: 100%"
-                                         [src]="decodeImage(solution.imageUrl)"
+                                         [src]="solution.imageUrl"
                                          alt="{{solution.title}}">
                                 </figure>
                             </div>
@@ -109,7 +110,7 @@
                                         <div class="flex-grow-1">
                                             <div class="py-2 d-flex align-items-center border-bottom">
                                                 <div class="d-flex ms-3 align-items-center flex-fill">
-                                                    <span class="avatar lg bg-lightgreen rounded-circle text-center d-flex align-items-center justify-content-center"><i class="icofont-file-pdf fs-5"></i></span>
+                                                    <span class="avatar lg bg-lightgreen rounded-circle text-center d-flex align-items-center justify-content-center"><mat-icon class="icofont-file-pdf fs-5">article</mat-icon></span>
                                                     <div class="d-flex flex-column ps-3">
                                                         <h6 class="fw-bold mb-0 small-14">file1.pdf</h6>
                                                     </div>
@@ -118,7 +119,7 @@
                                             </div>
                                             <div class="py-2 d-flex align-items-center border-bottom">
                                                 <div class="d-flex ms-3 align-items-center flex-fill">
-                                                    <span class="avatar lg bg-lightgreen rounded-circle text-center d-flex align-items-center justify-content-center"><i class="icofont-file-pdf fs-5"></i></span>
+                                                    <span class="avatar lg bg-lightgreen rounded-circle text-center d-flex align-items-center justify-content-center"><mat-icon class="icofont-file-pdf fs-5">article</mat-icon></span>
                                                     <div class="d-flex flex-column ps-3">
                                                         <h6 class="fw-bold mb-0 small-14">file2.pdf</h6>
                                                     </div>
@@ -142,43 +143,59 @@
                                 <div class="card mb-2">
                                     <div class="card-body">
                                         <div class="post">
-                                            <textarea class="form-control" placeholder="Escribe tu recomendacion" rows="4"></textarea>
-                                            <div class="py-3">
-                                                <a href="#" class="px-3 " title="upload images"><mat-icon class="icofont-ui-camera">camera</mat-icon></a>
-                                                <button class="btn btn-primary float-sm-end  mt-2 mt-sm-0">Enviar</button>
-                                            </div>
+                                            <form class="form" [formGroup]="recommendationFormGroup" (submit)="recommendSolution()">
+                                                <mat-form-field class="full-width" appearance="outline">
+                                                <textarea class="form-control"
+                                                          type="text"
+                                                          formControlName="description"
+                                                          placeholder="Escribe tu recomendacion" rows="4" matInput></textarea>
+                                                </mat-form-field>
+                                                <div class="py-3">
+                                                 <!--   <a href="#" class="px-3 " title="upload images"><mat-icon class="icofont-ui-camera">camera</mat-icon></a>-->
+                                                    <button  [disabled]="recommendationFormGroup.invalid" class="btn btn-primary float-sm-end  mt-2 mt-sm-0"  type="submit">Enviar</button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div> <!-- .Card End -->
+                               <!-- {{ solution.recommendations | json }}-->
                                 <ul class="list-unstyled res-set">
-                                    <li class="card mb-2">
+                                    <li class="card mb-2" *ngFor="let recommendation of solution.recommendations">
                                         <div class="card-body">
                                             <div class="d-flex mb-3 pb-3 border-bottom">
                                                 <img class="avatar rounded-circle" src="assets/img/xs/avatar1.jpg" alt="">
                                                 <div class="flex-fill ms-3 text-truncate">
-                                                    <h6 class="mb-0"><span>Orlando Kuan</span> <span class="text-muted small">publico</span></h6>
-                                                    <span class="text-muted">hace 3 horas</span>
+                                                    <h6 class="mb-0"><span>{{recommendation.tecnicoName}}</span></h6>
+                                                    <span class="text-muted">{{ recommendation.created_at}}</span>
                                                 </div>
                                             </div>
                                             <div class="timeline-item-post">
-                                                <h6>Actualización de driver para la version 2</h6>
-                                                <p>Los nuevos drivers ya no encuentran en en el portal del fabricante, sino en el portal de anavatec compras</p>
-                                                <div class="mb-2 mt-4">
-                                                    <a class="me-lg-4 me-2 text-primary" href="#"><i class="icofont-speech-comments"></i> Comentarios (2)</a>
+                                                <h6>{{recommendation.solutionTitle}}</h6>
+                                                <p>{{recommendation.description}}</p>
+                                                <!--{{recommendation.comments | json}}-->
+                                                <div class="mb-2 mt-4" (click)="openComments(showComments, $event)">
+                                                    <a class="me-lg-4 me-2 text-primary" style="cursor: pointer"><i class="icofont-speech-comments" ></i> Comentarios ({{ recommendation.comments.length}})</a>
                                                 </div>
-                                                <div>
-                                                    <div class="d-flex mt-3 pt-3 border-top">
+                                                <div *ngIf="showComments">
+                                                    <div class="d-flex mt-3 pt-3 border-top" *ngFor="let comment of recommendation.comments">
                                                         <img class="avatar rounded-circle" src="assets/img/xs/avatar2.jpg" alt="">
                                                         <div class="flex-fill ms-3 text-truncate">
-                                                            <p class="mb-0"><span>Zoe Garcia</span> <small class="msg-time">hace 1 hora </small></p>
-                                                            <span class="text-muted">puedes enviar la ruta del portal ?</span>
+                                                            <p class="mb-0"><span>{{comment.tecnicoName}}</span> <small class="msg-time">{{comment.createdAt}} </small></p>
+                                                            <span class="text-muted">{{comment.description}}</span>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                             <div class="mt-4">
-                                                <textarea class="form-control" placeholder="Responder"></textarea>
+                                                <form class="form" [formGroup]="commentFormGroup" (keydown.enter)="submitComment(recommendation.id)">
+                                                <textarea
+                                                        class="form-control"
+                                                        type="text"
+                                                        formControlName="description"
+                                                        placeholder="Escribe tu comentario" rows="4"
+                                                        matInput
+                                                ></textarea>
+                                                </form>
                                             </div>
                                         </div>
                                     </li> <!-- .Card End -->
@@ -266,4 +283,5 @@
         </div>
         <div class="button">Oops! No se encontraron resultados</div>
     </div>
+</div>
 </div>

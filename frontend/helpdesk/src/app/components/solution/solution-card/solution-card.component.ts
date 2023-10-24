@@ -34,11 +34,12 @@ export class SolutionCardComponent implements OnInit {
   findTicketsByProductId(ticketID:number): void {
     this.service.findSolutionsByTickets(ticketID).subscribe(resp => {
       this.ELEMENT_DATA_SOLUTIONS = resp;
+      console.log("DATA SOLUTIONS", resp);
       this.solutionStore.saveState(resp);
       this.status = true;
     }, error => {
         this.status = false;
-        //console.log(error)
+        console.log(error)
     })
   }
 }

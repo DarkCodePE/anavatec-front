@@ -14,3 +14,14 @@ export interface Chamado {
     isSolution:boolean;
     solution:boolean;
 }
+
+export interface ChamadoExpiredDTO {
+    id?: any;
+    dataFechamento?: string;
+    prioridade: string;
+    status: string;
+    titulo: string;
+    statusName: string;
+    nomeTecnico: string;
+    countDays: number;
+}

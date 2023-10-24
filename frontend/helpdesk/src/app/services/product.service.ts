@@ -3,7 +3,14 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Chamado} from "../models/chamado";
 import {API_CONFIG} from "../config/api.config";
-import {Product, Solution} from "../models/Product";
+import {
+    Comment,
+    CommentRequestDTO,
+    Product,
+    Recommendation,
+    RecommendationRequest, SearchSolutionRequestDTO,
+    Solution
+} from "../models/Product";
 
 @Injectable({
     providedIn: 'root'
@@ -28,7 +35,12 @@ export class ProductService {
     findSolutionsByTickets(ticketID:number): Observable<Solution[]> {
         return this.http.get<Solution[]>(`${API_CONFIG.baseUrl}/solution/tickets?ticketID=${ticketID}`);
     }
-
+    searchSolutionsByTitle(searchSolutionRequestDTO: SearchSolutionRequestDTO): Observable<Solution[]> {
+       return this.http.post<Solution[]>(`${API_CONFIG.baseUrl}/solution/search`, searchSolutionRequestDTO);
+    }
+    searchChamaodosByTitle(searchSolutionRequestDTO: SearchSolutionRequestDTO): Observable<Chamado[]> {
+        return this.http.get<Chamado[]>(`${API_CONFIG.baseUrl}/solution/search?query=${searchSolutionRequestDTO.title}&id=${searchSolutionRequestDTO.productId}`);
+    }
     create(productRequestDTO: any, file:File): Observable<Product[]> {
         let body = new FormData();
         const blob = new Blob([JSON.stringify(productRequestDTO)], { type: 'application/json' });
@@ -39,4 +51,13 @@ export class ProductService {
         return this.http.post<Product[]>(`${API_CONFIG.baseUrl}/product/create`, body, { headers: headers });
     }
 
+    recommendSolution(recommendationRequest: RecommendationRequest): Observable<Solution> {
+        return this.http.post<Solution>(`${API_CONFIG.baseUrl}/recommendations`, recommendationRequest);
+    }
+    getRecommendationsBySolutionId(solutionId: number): Observable<Recommendation[]> {
+        return this.http.get<Recommendation[]>(`${API_CONFIG.baseUrl}/recommendations?solutionId=${solutionId}`);
+    }
+    saveComment(commentRequestDTO: CommentRequestDTO): Observable<Solution> {
+        return this.http.post<Solution>(`${API_CONFIG.baseUrl}/recommendations/comment`, commentRequestDTO);
+    }
 }

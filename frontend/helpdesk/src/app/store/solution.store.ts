@@ -1,5 +1,5 @@
 import {BehaviorSubject} from "rxjs";
-import {Product, Solution} from "../models/Product";
+import {Product, Recommendation, Solution} from "../models/Product";
 import {Injectable} from "@angular/core";
 
 @Injectable({
@@ -14,6 +14,7 @@ export class SolutionStore {
         summary: '',
         imageUrl: '',
         status: false,
+        recommendations: []
         }]);
     state$ = this.state.asObservable();
     constructor() {}

@@ -1,30 +1,45 @@
 import {Injectable} from "@angular/core";
 import {BehaviorSubject} from "rxjs";
-import {Solution, SolutionState} from "../models/Product";
+import {Recommendation, Solution, SolutionState} from "../models/Product";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Injectable({
     providedIn: 'root'
 })
 export class SolutionFormStore {
     private state = new BehaviorSubject<SolutionState>({
-        ticketId: 0,
+        id: 0,
+        productId: 0,
         title: '',
         summary: '',
-        file: null,
+        imageUrl: '',
+        status: false,
+        recommendations: []
     });
     state$ = this.state.asObservable();
-    constructor() {}
-    saveState(state: SolutionState) {
+    constructor(
+        private _sanitizer: DomSanitizer) {}
+    saveState(state: SolutionState, imageUrl: string) {
+        state.imageUrl = this.decodeImage(imageUrl);
         this.state.next(state);
     }
-    saveImage(image: any){
-        const state = this.stateValue;
-        this.saveState({
-            ...state,
-            file: image,
+    saveImageURL(imageURL: string) {
+        this.state.next({
+            ...this.stateValue,
+            imageUrl: imageURL
+        });
+    }
+    saveStateRecommendation(state: Recommendation[]) {
+        this.state.next({
+            ...this.stateValue,
+            recommendations: state
         });
     }
     get stateValue(): SolutionState{
         return this.state.getValue();
+    }
+    decodeImage(base64Image: string){
+        return this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'
+            + base64Image);
     }
 }

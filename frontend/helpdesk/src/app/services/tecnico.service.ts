@@ -14,7 +14,9 @@ export class TecnicoService {
   findById(id: any): Observable<Tecnico> {
     return this.http.get<Tecnico>(`${API_CONFIG.baseUrl}/tecnicos/${id}`);
   }
-
+  findByEmail(email: string): Observable<Tecnico> {
+    return this.http.get<Tecnico>(`${API_CONFIG.baseUrl}/tecnicos/email?email=${email}`);
+  }
   findAll(): Observable<Tecnico[]>{
     return this.http.get<Tecnico[]>(`${API_CONFIG.baseUrl}/tecnicos`);
   }

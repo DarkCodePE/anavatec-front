@@ -40,6 +40,10 @@
     top: 26vh;
     left: 60vw;
 }
+.full-width{
+    width: 100%;
+}
+
 .star:nth-child(1):before,
 .star:nth-child(1):after {
     position: absolute;

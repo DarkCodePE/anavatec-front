@@ -1,6 +1,21 @@
-<div class="ticket-container" *ngIf="ELEMENT_DATA_TICKETS.length > 0">
+<!-- main menu Search-->
+<div class="order-0 col-lg-12 col-md-12 col-sm-12 col-12 mb-12 mb-md-0 " style="    padding: 0 2em;">
+    <div class="input-group flex-nowrap input-group-lg justify-content-start">
+        <button type="button" class="input-group-text" id="addon-wrapping"><mat-icon class="fa fa-search">search</mat-icon></button>
+        <form class="form-control" style="flex: .2 0 auto;" [formGroup]="recommendationFormGroup" (keydown.enter)="findSolution()">
+            <input type="search"
+                   formControlName="title"
+                   class="form-control"
+                   placeholder="Buscar soluciones"
+                   aria-label="search" aria-describedby="addon-wrapping" matInput>
+        </form>
+    </div>
+</div>
+<!--{{(chamados$ | async)| json}}-->
+<!--{{solutions$ | async | json}}-->
+<div class="ticket-container" *ngIf="(chamados$ | async).length > 0">
     <div>
-        <app-solution-card *ngFor="let ticket of ELEMENT_DATA_TICKETS; let i = index"
+        <app-solution-card *ngFor="let ticket of (chamados$ | async); let i = index"
                            [ticket]="ticket" ></app-solution-card>
     </div>
    <div>
@@ -9,7 +24,7 @@
 </div>
 <div style="position: relative;
     width: 100%;
-    height: 50vh;" *ngIf="ELEMENT_DATA_TICKETS.length == 0">
+    height: 50vh;" *ngIf="(chamados$ | async).length == 0">
     <div class="circle circle--inner">
         <div class="four four--1">4</div>
         <div class="four four--2">4</div>

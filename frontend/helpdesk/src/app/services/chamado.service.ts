@@ -1,7 +1,7 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Chamado } from '../models/chamado';
+import {Chamado, ChamadoExpiredDTO} from '../models/chamado';
 import { API_CONFIG } from '../config/api.config';
 import {Solution, SolutionState} from "../models/Product";
 
@@ -27,7 +27,9 @@ export class ChamadoService {
   update(chamado: Chamado): Observable<Chamado> {
     return this.http.put<Chamado>(`${API_CONFIG.baseUrl}/chamados/${chamado.id}`, chamado);
   }
-
+  getChamadoExpired(): Observable<ChamadoExpiredDTO[]> {
+    return this.http.get<ChamadoExpiredDTO[]>(`${API_CONFIG.baseUrl}/chamados/expired`);
+  }
   createSolution(solutionRequestDTO: any, file:File): Observable<Solution[]> {
     console.log(solutionRequestDTO);
     let body = new FormData();
