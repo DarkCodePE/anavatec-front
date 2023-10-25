@@ -20,7 +20,7 @@ export class ProductListComponent implements OnInit {
   ELEMENT_DATA: Product[] = [];
   FILTERED_DATA: Product[] = [];
 
-  displayedColumns = ['Nombre del archivo', 'tipo', 'precio', 'categoria'];
+  displayedColumns = ['sku', 'titulo', 'image', 'categoria'];
   dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
 
 
