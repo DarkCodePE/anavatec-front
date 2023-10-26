@@ -14,7 +14,17 @@ export interface Chamado {
     isSolution:boolean;
     solution:boolean;
 }
-
+export interface ChamadoTop {
+    total: number;
+    totalSolved: number;
+    totalTechnician: number;
+    topTechnician: TopTecnicoDTO[];
+}
+export interface TopTecnicoDTO {
+    nome: string;
+    email: string;
+    quantidade: number;
+}
 export interface ChamadoExpiredDTO {
     id?: any;
     dataFechamento?: string;

@@ -1,7 +1,7 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import {Chamado, ChamadoExpiredDTO} from '../models/chamado';
+import {Chamado, ChamadoExpiredDTO, ChamadoTop} from '../models/chamado';
 import { API_CONFIG } from '../config/api.config';
 import {Solution, SolutionState} from "../models/Product";
 
@@ -29,6 +29,9 @@ export class ChamadoService {
   }
   getChamadoExpired(): Observable<ChamadoExpiredDTO[]> {
     return this.http.get<ChamadoExpiredDTO[]>(`${API_CONFIG.baseUrl}/chamados/expired`);
+  }
+  getTopTechnician(): Observable<ChamadoTop> {
+    return this.http.get<ChamadoTop>(`${API_CONFIG.baseUrl}/chamados/top`);
   }
   createSolution(solutionRequestDTO: any, file:File): Observable<Solution[]> {
     console.log(solutionRequestDTO);

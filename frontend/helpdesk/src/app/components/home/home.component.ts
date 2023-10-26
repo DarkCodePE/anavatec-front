@@ -1,5 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ApexChart, ApexNonAxisChartSeries, ApexResponsive, ChartComponent} from "ng-apexcharts";
+import {ChamadoService} from "../../services/chamado.service";
+import {ChamadoTop} from "../../models/chamado";
 
 
 export type ChartOptions = {
@@ -16,7 +18,9 @@ export type ChartOptions = {
 export class HomeComponent implements OnInit {
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
-  constructor() {
+  top: ChamadoTop;
+  constructor(private chamadoService: ChamadoService) {
+    this.findTopTecnico();
     this.chartOptions = {
       series: [44, 55, 13, 43, 22],
       chart: {
@@ -39,7 +43,11 @@ export class HomeComponent implements OnInit {
       ]
     };
   }
-
+  findTopTecnico(){
+    this.chamadoService.getTopTechnician().subscribe(resp => {
+     this.top = resp;
+    });
+  }
   ngOnInit(): void {
   }
 
