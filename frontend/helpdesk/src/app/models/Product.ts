@@ -23,6 +23,10 @@ export interface Solution {
     status: boolean;
     recommendations: Recommendation[];
 }
+export interface Category {
+    id?: any;
+    name: string;
+}
 export interface SolutionState {
     id?: any;
     productId: number;

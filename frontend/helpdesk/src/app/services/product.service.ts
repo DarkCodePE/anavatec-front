@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {Chamado} from "../models/chamado";
 import {API_CONFIG} from "../config/api.config";
 import {
+    Category,
     Comment,
     CommentRequestDTO,
     Product,
@@ -59,5 +60,8 @@ export class ProductService {
     }
     saveComment(commentRequestDTO: CommentRequestDTO): Observable<Solution> {
         return this.http.post<Solution>(`${API_CONFIG.baseUrl}/recommendations/comment`, commentRequestDTO);
+    }
+    getAllCategories(): Observable<Category[]> {
+        return this.http.get<Category[]>(`${API_CONFIG.baseUrl}/product/categories`);
     }
 }

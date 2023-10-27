@@ -4,6 +4,7 @@ import {ProductService} from "../../../../services/product.service";
 import {FormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import Swal from 'sweetalert2';
 import {ProductStore} from "../../../../store/product.store";
+import {Category} from "../../../../models/Product";
 
 @Component({
   selector: 'app-product-create',
@@ -15,6 +16,7 @@ export class ProductCreateComponent implements OnInit {
   file?:File |null;
   errorMessage: string = '';
   private createProductLoading: boolean;
+  categories: Category[] = [];
   constructor(
       public productDialog: MatDialogRef<ProductCreateComponent>,
       private store:ProductStore,
@@ -25,8 +27,15 @@ export class ProductCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+    this.getAllCategories();
   }
-
+  getAllCategories(){
+    this.service.getAllCategories().subscribe({
+        next: (res: any) => {
+            this.categories = res;
+        }
+    })
+  }
   createForm(){
     this.productFormGroup = this.formBuilder.group({
       sku: ['', [Validators.required]],
