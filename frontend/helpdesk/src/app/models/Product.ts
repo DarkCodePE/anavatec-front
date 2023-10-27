@@ -21,6 +21,9 @@ export interface Solution {
     summary: string;
     imageUrl: string;
     status: boolean;
+    technicalName: string;
+    priority: string;
+    nameStatus: string;
     recommendations: Recommendation[];
 }
 export interface Category {
@@ -34,6 +37,9 @@ export interface SolutionState {
     summary: string;
     imageUrl: SafeResourceUrl;
     status: boolean;
+    technicalName: string;
+    priority: string;
+    nameStatus: string;
     recommendations: Recommendation[];
 }
 export interface Recommendation {

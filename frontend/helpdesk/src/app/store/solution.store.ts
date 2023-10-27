@@ -14,6 +14,9 @@ export class SolutionStore {
         summary: '',
         imageUrl: '',
         status: false,
+        technicalName: '',
+        priority: '',
+        nameStatus: '',
         recommendations: []
         }]);
     state$ = this.state.asObservable();
