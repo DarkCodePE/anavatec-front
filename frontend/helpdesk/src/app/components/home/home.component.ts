@@ -42,6 +42,7 @@ export class HomeComponent implements OnInit {
         }
       ]
     };
+
   }
   findTopTecnico(){
     this.chamadoService.getTopTechnician().subscribe(resp => {
