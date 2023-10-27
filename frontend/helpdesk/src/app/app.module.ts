@@ -61,6 +61,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import { TicketSolutionComponent } from './components/chamado/ticket-solution/ticket-solution.component';
 import {NgApexchartsModule} from "ng-apexcharts";
 import { MetricsComponent } from './components/home/metrics/metrics.component';
+import { GantComponent } from './components/home/gant/gant.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { MetricsComponent } from './components/home/metrics/metrics.component';
     SolutionListComponent,
     SolutionGridComponent,
     TicketSolutionComponent,
-    MetricsComponent
+    MetricsComponent,
+    GantComponent
   ],
   imports: [
     BrowserModule,
