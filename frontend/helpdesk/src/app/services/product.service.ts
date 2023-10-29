@@ -64,4 +64,10 @@ export class ProductService {
     getAllCategories(): Observable<Category[]> {
         return this.http.get<Category[]>(`${API_CONFIG.baseUrl}/product/categories`);
     }
+    saveCategory(category: Category): Observable<Category> {
+        return this.http.post<Category>(`${API_CONFIG.baseUrl}/product/category/create`, category);
+    }
+    deleteCategory(id: number): Observable<Category[]> {
+        return this.http.get<Category[]>(`${API_CONFIG.baseUrl}/product/delete/category?id=${id}`);
+    }
 }

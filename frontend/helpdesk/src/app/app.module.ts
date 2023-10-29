@@ -62,6 +62,8 @@ import { TicketSolutionComponent } from './components/chamado/ticket-solution/ti
 import {NgApexchartsModule} from "ng-apexcharts";
 import { MetricsComponent } from './components/home/metrics/metrics.component';
 import { GantComponent } from './components/home/gant/gant.component';
+import { CategoryComponent } from './components/product/category/category.component';
+import { CategoryActionsComponent } from './components/product/modal/category-actions/category-actions.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +94,9 @@ import { GantComponent } from './components/home/gant/gant.component';
     SolutionGridComponent,
     TicketSolutionComponent,
     MetricsComponent,
-    GantComponent
+    GantComponent,
+    CategoryComponent,
+    CategoryActionsComponent
   ],
   imports: [
     BrowserModule,

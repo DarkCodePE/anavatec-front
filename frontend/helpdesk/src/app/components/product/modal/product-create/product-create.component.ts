@@ -97,7 +97,7 @@ export class ProductCreateComponent implements OnInit {
   ];
 
   closeModal() {
-
+    this.productDialog.close(false);
   }
 
   onDeleteFile() {
