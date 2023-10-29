@@ -36,7 +36,8 @@ export class CategoryComponent implements OnInit {
   applyFilter(event: KeyboardEvent) {
     const filterValue = (event.target as HTMLInputElement).value;
     console.log(filterValue)
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    //this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.store.filterStateByNames(filterValue);
   }
   OpenModal() {
     this.dialog.open(CategoryActionsComponent, {
