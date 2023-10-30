@@ -1,0 +1,10 @@
+.mat-icon-custom {
+    -webkit-user-select: none;
+    user-select: none;
+    background-repeat: no-repeat;
+    display: inline-block;
+    fill: currentColor;
+    width: auto !important;
+    height: auto !important;
+    font-size: 50px !important;
+}

@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { API_CONFIG } from '../config/api.config';
 import { Observable } from 'rxjs';
-import { Tecnico } from '../models/tecnico';
+import {ProfileRequestDTO, Tecnico} from '../models/tecnico';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +31,16 @@ export class TecnicoService {
 
   delete(id: any): Observable<Tecnico>{
     return this.http.delete<Tecnico>(`${API_CONFIG.baseUrl}/tecnicos/${id}`);
+  }
+  getProfile(userID: number){
+    return this.http.get(`${API_CONFIG.baseUrl}/profile?id=${userID}`);
+  }
+  createProfile(data: ProfileRequestDTO){
+    return this.http.post(`${API_CONFIG.baseUrl}/profile`,data);
+  }
+  updateProfile(data: ProfileRequestDTO, id: number){
+    const params = new HttpParams()
+        .set('id', id)
+    return this.http.put(`${API_CONFIG.baseUrl}/profile`,data, {params});
   }
 }

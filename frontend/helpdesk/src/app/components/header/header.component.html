@@ -31,31 +31,42 @@
                                                     'bg-danger':
                                                       ticket.countDays > 1 }"
                   >{{ticket.statusName}}</span></span> <small>{{ ticket.dataFechamento }}</small></p>
-                                            <span class="color-000"> {{ ticket.titulo }} <span class="badge"
-                                                                                               [ngClass]="{
+                                            <span class="color-000"> {{ ticket.titulo }} <div class="w-100 d-flex justify-content-end">
+                                                <span class="badge"
+                                                      [ngClass]="{
                                                     'bg-success':
                                                       ticket.prioridade == 'BAIXA',
                                                     'bg-warning':
                                                      ticket.prioridade == 'MEDIA',
                                                     'bg-danger':
-                                                      ticket.prioridade == 'ALTA'}"                                      style="margin-left: 10px">{{ ticket.prioridade}}</span></span>
+                                                      ticket.prioridade == 'ALTA'}">{{ ticket.prioridade}}</span>
+                                            </div></span>
                                         </div>
                                     </a>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <a class="card-footer text-center border-top-0" href="#"> Ver todas las notificaciones</a>
+                    <a class="card-footer text-center border-top-0" routerLink="chamados"> Ver todas las notificaciones</a>
                 </div>
             </div>
         </div>
-        <div class="dropdown user-profile ml-2 ml-sm-3 d-flex align-items-center zindex-popover">
+        <div class="dropdown user-profile ml-2 ml-sm-3 d-flex align-items-center zindex-popover ">
             <div class="u-info me-2">
-                <p class="mb-0 text-end line-height-sm "><span class="font-weight-bold">{{user?.nome}}</span></p>
+                <p class="mb-0 text-end line-height-sm "><span class="font-weight-bold text-uppercase">{{user?.nome}}</span></p>
                 <small>Administrador</small>
             </div>
-            <a class="nav-link dropdown-toggle pulse p-0" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static">
-                <img class="avatar lg rounded-circle img-thumbnail" src="assets/img/profile_av.png" alt="profile">
+            <a class="nav-link dropdown-toggle pulse p-0 " href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static">
+                <div *ngIf="user?.nome == null">
+                    <img class="avatar lg rounded-circle img-thumbnail" src="assets/img/profile_av.png" alt="profile">
+                </div>
+                <div *ngIf="user?.nome != null" style="width: 56px;
+    min-width: 56px;
+    height: 56px;">
+                    <div class="avatar-name">{{
+                        name + " " + lastName | namInit
+                        }}</div>
+                </div>
             </a>
             <div class="dropdown-menu rounded-lg shadow border-0 dropdown-animation dropdown-menu-end p-0 m-0">
                 <div class="card border-0 w280">
@@ -71,10 +82,10 @@
                         <div><hr class="dropdown-divider border-dark"></div>
                     </div>
                     <div class="list-group m-2 ">
-                        <a  class="list-group-item list-group-item-action border-0 "><i class="icofont-tasks fs-5 me-3"></i>Mis tickets</a>
+                        <a routerLink="chamados"  class="list-group-item list-group-item-action border-0 "><i class="icofont-tasks fs-5 me-3"></i>Mis tickets</a>
                         <a (click)="logout()" class="list-group-item list-group-item-action border-0 "><i class="icofont-logout fs-6 me-3"></i>Logout</a>
                         <div><hr class="dropdown-divider border-dark"></div>
-                        <a href="ui-elements/auth-signup.html" class="list-group-item list-group-item-action border-0 "><i class="icofont-contact-add fs-5 me-3"></i>Ver perfil</a>
+                        <a routerLink="perfil" class="list-group-item list-group-item-action border-0 "><i class="icofont-contact-add fs-5 me-3"></i>Ver perfil</a>
                     </div>
                 </div>
             </div>

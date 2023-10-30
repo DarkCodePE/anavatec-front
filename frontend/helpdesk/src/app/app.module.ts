@@ -64,6 +64,8 @@ import { MetricsComponent } from './components/home/metrics/metrics.component';
 import { GantComponent } from './components/home/gant/gant.component';
 import { CategoryComponent } from './components/product/category/category.component';
 import { CategoryActionsComponent } from './components/product/modal/category-actions/category-actions.component';
+import { PerfilComponent } from './components/home/perfil/perfil.component';
+import {NamInitPipe} from "./pipes/NamInitPipe.pipe";
 
 @NgModule({
   declarations: [
@@ -96,7 +98,9 @@ import { CategoryActionsComponent } from './components/product/modal/category-ac
     MetricsComponent,
     GantComponent,
     CategoryComponent,
-    CategoryActionsComponent
+    CategoryActionsComponent,
+    PerfilComponent,
+    NamInitPipe
   ],
   imports: [
     BrowserModule,

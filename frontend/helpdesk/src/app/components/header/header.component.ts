@@ -16,6 +16,8 @@ export class HeaderComponent implements OnInit {
   user: any;
   jwt = new JwtHelperService();
   ticketExpired: ChamadoExpiredDTO[] = [];
+  name: string = '';
+  lastName: string = '';
   constructor(private service: TecnicoService,
               private chamadoService: ChamadoService,
               private router: Router,
@@ -31,6 +33,8 @@ export class HeaderComponent implements OnInit {
     const decode = this.jwt.decodeToken(token);
     this.service.findByEmail(decode?.sub).subscribe(resp => {
       this.user = resp;
+      this.name = this.user.nome.split(' ')[0];
+      this.lastName = this.user.nome.split(' ')[1];
     });
   }
   LoadTicketExpired(){

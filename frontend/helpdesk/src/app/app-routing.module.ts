@@ -21,6 +21,7 @@ import {SolutionComponent} from "./components/solution/solution.component";
 import {SolutionGridComponent} from "./components/solution/solution-grid/solution-grid.component";
 import {SolutionDetailComponent} from "./components/solution/solution-detail/solution-detail.component";
 import {CategoryComponent} from "./components/product/category/category.component";
+import {PerfilComponent} from "./components/home/perfil/perfil.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -33,6 +34,7 @@ const routes: Routes = [
     { path: 'tecnicos/delete/:id', component: TecnicoDeleteComponent},
 
     { path: 'home', component: HomeComponent},
+    { path: 'perfil', component: PerfilComponent},
     { path: 'clientes', component: ClienteListComponent},
     { path: 'clientes/create', component: ClienteCreateComponent},
     { path: 'clientes/update/:id', component: ClienteUpdateComponent},
@@ -47,6 +49,7 @@ const routes: Routes = [
     {path: 'graficos', component: ChartComponent},
     {path: 'soluciones', component: SolutionComponent},
     { path: 'soluciones/producto/:id', component: SolutionGridComponent },
+
   ] }
 ];
 
