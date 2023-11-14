@@ -66,6 +66,9 @@ import { CategoryComponent } from './components/product/category/category.compon
 import { CategoryActionsComponent } from './components/product/modal/category-actions/category-actions.component';
 import { PerfilComponent } from './components/home/perfil/perfil.component';
 import {NamInitPipe} from "./pipes/NamInitPipe.pipe";
+import { PerfilCreateComponent } from './components/home/modal/perfil-create/perfil-create.component';
+import {DndDirective} from "./directives/DndDirective.directive";
+import {ProgressComponent} from "./components/util/progress/progress.component";
 
 @NgModule({
   declarations: [
@@ -100,7 +103,10 @@ import {NamInitPipe} from "./pipes/NamInitPipe.pipe";
     CategoryComponent,
     CategoryActionsComponent,
     PerfilComponent,
-    NamInitPipe
+    NamInitPipe,
+    PerfilCreateComponent,
+    DndDirective,
+    ProgressComponent
   ],
   imports: [
     BrowserModule,

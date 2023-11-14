@@ -1,3 +1,4 @@
+{{(profile$ | async) | json}}
 <div class="body d-flex py-lg-3 py-md-2">
     <div class="container-xxl">
         <div class="row clearfix">
@@ -14,16 +15,29 @@
                 <div class="card teacher-card  mb-3">
                     <div class="card-body d-flex teacher-fulldeatil">
                         <div class="profile-teacher pe-xl-4 pe-md-2 pe-sm-4 pe-4 text-center w220">
-                            <a href="#">
-                                <img src="assets/img/lg/avatar3.jpg" alt="" class="avatar xl rounded-circle img-thumbnail shadow-sm">
+                            <a href="javascript:void(0)" class="position-relative" *ngIf="(profile$ | async)?.profile.avatar != ''">
+                                <img [src]="(profile$ | async)?.profile?.avatar" alt="avatar" class="avatar xl rounded-circle img-thumbnail shadow-sm">
+                                <span class="camara-avatar"><label for="file"><img src="./assets/img/iconCamera.svg" alt="camera"> </label><input id="file" type="file" class="fileInput d-none" (change)="uploadImageFile($event)"
+                                ></span>
                             </a>
+
+                            <div *ngIf="(profile$ | async)?.nome != null && (profile$ | async)?.profile.avatar == ''" class="position-relative">
+                                <div class="avatar-name">{{
+                                    (profile$ | async)?.nome.split(' ')[0] + " " + (profile$ | async)?.nome.split(' ')[1] | namInit
+                                    }}</div>
+                                <span class="camara-avatar-button"><label for="file"><img src="./assets/img/iconCamera.svg" alt="camera"> </label><input id="file" type="file" class="fileInput d-none" (change)="uploadImageFile($event)"
+                                ></span>
+                            </div>
                             <div class="about-info d-flex align-items-center mt-3 justify-content-center flex-column">
                                 <h6 class="mb-0 fw-bold d-block fs-6">CEO</h6>
                                 <span class="text-muted small">CODIGO: PXL-0001</span>
                             </div>
                         </div>
                         <div class="teacher-info border-start ps-xl-4 ps-md-4 ps-sm-4 ps-4 w-100">
-                            <h6  class="mb-0 mt-2  fw-bold d-block fs-6">Orlando Kuan</h6>
+                            <div class="d-flex justify-content-between ">
+                                <h6  class="mb-0 mt-2  fw-bold d-block fs-6">Orlando Kuan</h6>
+                                <button (click)="OpenModal()"   class="full-width mat-elevation-z2" mat-raised-button color="primary" ><mat-icon>edit_note</mat-icon> Editar perfil</button>
+                            </div>
                             <span class="py-1 fw-bold small-11 mb-0 mt-1 text-muted">Senior</span>
                             <p class="mt-2 small">The purpose of lorem ipsum is to create a natural looking block of text (sentence, paragraph, page, etc.) that doesn't distract from the layout. A practice not without controversy</p>
                             <div class="row g-2 pt-2">

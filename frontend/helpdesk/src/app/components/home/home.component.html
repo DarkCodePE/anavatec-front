@@ -88,110 +88,20 @@
                 </div>
             </div><!-- Row End -->
             <div class="row g-3 mb-3 row-deck">
-                <div class="col-md-12 col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h6 class="mb-3 fw-bold ">Carga de trabajo por persona</h6>
-                            <div class="mt-3" id="incomeanalytics">
-                                <div id="chart">
-                                    <apx-chart
-                                            [series]="chartOptions.series"
-                                            [chart]="chartOptions.chart"
-                                            [labels]="chartOptions.labels"
-                                            [responsive]="chartOptions.responsive"
-                                    ></apx-chart>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12 col-lg-8">
-                    <div class="card">
-                        <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                            <div class="info-header">
-                                <h6 class="mb-0 fw-bold ">Analisis de incidencias vs Soluciones por año</h6>
-                            </div>
-                            <button class="btn btn-sm btn-link  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
-                            <ul class="dropdown-menu border-0 shadow dropdown-menu-end">
-                                <li><a class="dropdown-item py-2 rounded" href="#">Last 7 days</a></li>
-                                <li><a class="dropdown-item py-2 rounded" href="#">Last 30 days</a></li>
-                                <li><a class="dropdown-item py-2 rounded" href="#">Last 60 days</a></li>
-                            </ul>
-                        </div>
-                        <div class="card-body">
-                            <div id="apex-timeline">
-                                <app-metrics></app-metrics>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12 col-lg-8">
-                    <div class="card">
-                        <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                            <div class="info-header">
-                                <h6 class="mb-0 fw-bold ">Timeline de entregas</h6>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div id="apex-timeline-2">
-                                <app-gant></app-gant>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- Row End -->
-            <div class="row clearfix  g-3">
                 <div class="col-lg-12 col-md-12 flex-column">
                     <div class="row g-3 row-deck">
                         <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
                             <div class="card">
-                                <div class="card-header py-3">
-                                    <h6 class="mb-0 fw-bold ">Progreso de los tickets</h6>
-                                </div>
-                                <div class="card-body mem-list">
-                                    <div class="progress-count mb-4">
-                                        <div class="d-flex justify-content-between align-items-center mb-1">
-                                            <h6 class="mb-0 fw-bold d-flex align-items-center">Abierto</h6>
-                                            <span class="small text-muted">10/40</span>
-                                        </div>
-                                        <div class="progress" style="height: 10px;">
-                                            <div class="progress-bar light-info-bg" role="progressbar" style="width: 92%" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                    <div class="progress-count mb-4">
-                                        <div class="d-flex justify-content-between align-items-center mb-1">
-                                            <h6 class="mb-0 fw-bold d-flex align-items-center">En progreso</h6>
-                                            <span class="small text-muted">01/03</span>
-                                        </div>
-                                        <div class="progress" style="height: 10px;">
-                                            <div class="progress-bar bg-lightgreen" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                    <div class="progress-count mb-4">
-                                        <div class="d-flex justify-content-between align-items-center mb-1">
-                                            <h6 class="mb-0 fw-bold d-flex align-items-center">Cerrado</h6>
-                                            <span class="small text-muted">02/07</span>
-                                        </div>
-                                        <div class="progress" style="height: 10px;">
-                                            <div class="progress-bar light-success-bg" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                    <div class="progress-count mb-3">
-                                        <div class="d-flex justify-content-between align-items-center mb-1">
-                                            <h6 class="mb-0 fw-bold d-flex align-items-center">Pruebas</h6>
-                                            <span class="small text-muted">01/05</span>
-                                        </div>
-                                        <div class="progress" style="height: 10px;">
-                                            <div class="progress-bar light-orange-bg" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </div>
-                                    <div class="progress-count mb-4">
-                                        <div class="d-flex justify-content-between align-items-center mb-1">
-                                            <h6 class="mb-0 fw-bold d-flex align-items-center">Solucionado</h6>
-                                            <span class="small text-muted">01/08</span>
-                                        </div>
-                                        <div class="progress" style="height: 10px;">
-                                            <div class="progress-bar bg-lightyellow" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="card-body">
+                                    <h6 class="mb-3 fw-bold ">Carga de trabajo por persona</h6>
+                                    <div class="mt-3" id="incomeanalytics">
+                                        <div id="chart">
+                                            <apx-chart
+                                                    [series]="chartOptions.series"
+                                                    [chart]="chartOptions.chart"
+                                                    [labels]="chartOptions.labels"
+                                                    [responsive]="chartOptions.responsive"
+                                            ></apx-chart>
                                         </div>
                                     </div>
                                 </div>
@@ -245,95 +155,60 @@
                         <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-12">
                             <div class="card">
                                 <div class="card-header py-3">
-                                    <h6 class="mb-0 fw-bold ">Allocated Task Members</h6>
+                                    <h6 class="mb-0 fw-bold ">Progreso de los tickets</h6>
                                 </div>
-                                <div class="card-body">
-                                    <div class="flex-grow-1 mem-list">
-                                        <div class="py-2 d-flex align-items-center border-bottom">
-
-                                            <div class="d-flex ms-2 align-items-center flex-fill">
-                                                <img src="assets/img/xs/avatar6.jpg" class="avatar lg rounded-circle img-thumbnail" alt="avatar">
-                                                <div class="d-flex flex-column ps-2">
-                                                    <h6 class="fw-bold mb-0">Lucinda Massey</h6>
-                                                    <span class="small text-muted">Ui/UX Designer</span>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn light-danger-bg text-end" data-bs-toggle="modal" data-bs-target="#dremovetask">Remove</button>
+                                <div class="card-body mem-list">
+                                    <div class="progress-count mb-4">
+                                        <div class="d-flex justify-content-between align-items-center mb-1">
+                                            <h6 class="mb-0 fw-bold d-flex align-items-center">Abierto</h6>
+                                            <span class="small text-muted">10/40</span>
                                         </div>
-                                        <div class="py-2 d-flex align-items-center border-bottom">
-
-                                            <div class="d-flex ms-2 align-items-center flex-fill">
-                                                <img src="assets/img/xs/avatar4.jpg" class="avatar lg rounded-circle img-thumbnail" alt="avatar">
-                                                <div class="d-flex flex-column ps-2">
-                                                    <h6 class="fw-bold mb-0">Ryan Nolan</h6>
-                                                    <span class="small text-muted">Website Designer</span>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn light-danger-bg text-end" data-bs-toggle="modal" data-bs-target="#dremovetask">Remove</button>
+                                        <div class="progress" style="height: 10px;">
+                                            <div class="progress-bar light-info-bg" role="progressbar" style="width: 92%" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
-                                        <div class="py-2 d-flex align-items-center border-bottom">
-
-                                            <div class="d-flex ms-2 align-items-center flex-fill">
-                                                <img src="assets/img/xs/avatar9.jpg" class="avatar lg rounded-circle img-thumbnail" alt="avatar">
-                                                <div class="d-flex flex-column ps-2">
-                                                    <h6 class="fw-bold mb-0">Oliver	Black</h6>
-                                                    <span class="small text-muted">App Developer</span>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn light-danger-bg text-end" data-bs-toggle="modal" data-bs-target="#dremovetask">Remove</button>
+                                    </div>
+                                    <div class="progress-count mb-4">
+                                        <div class="d-flex justify-content-between align-items-center mb-1">
+                                            <h6 class="mb-0 fw-bold d-flex align-items-center">En progreso</h6>
+                                            <span class="small text-muted">01/03</span>
                                         </div>
-                                        <div class="py-2 d-flex align-items-center border-bottom">
-
-                                            <div class="d-flex ms-2 align-items-center flex-fill">
-                                                <img src="assets/img/xs/avatar10.jpg" class="avatar lg rounded-circle img-thumbnail" alt="avatar">
-                                                <div class="d-flex flex-column ps-2">
-                                                    <h6 class="fw-bold mb-0">Adam Walker</h6>
-                                                    <span class="small text-muted">Quality Checker</span>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn light-danger-bg text-end">Remove</button>
+                                        <div class="progress" style="height: 10px;">
+                                            <div class="progress-bar bg-lightgreen" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
-                                        <div class="py-2 d-flex align-items-center border-bottom">
-
-                                            <div class="d-flex ms-2 align-items-center flex-fill">
-                                                <img src="assets/img/xs/avatar4.jpg" class="avatar lg rounded-circle img-thumbnail" alt="avatar">
-                                                <div class="d-flex flex-column ps-2">
-                                                    <h6 class="fw-bold mb-0">Brian Skinner</h6>
-                                                    <span class="small text-muted">Quality Checker</span>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn light-danger-bg text-end" data-bs-toggle="modal" data-bs-target="#dremovetask">Remove</button>
+                                    </div>
+                                    <div class="progress-count mb-4">
+                                        <div class="d-flex justify-content-between align-items-center mb-1">
+                                            <h6 class="mb-0 fw-bold d-flex align-items-center">Cerrado</h6>
+                                            <span class="small text-muted">02/07</span>
                                         </div>
-                                        <div class="py-2 d-flex align-items-center border-bottom">
-
-                                            <div class="d-flex ms-2 align-items-center flex-fill">
-                                                <img src="assets/img/xs/avatar11.jpg" class="avatar lg rounded-circle img-thumbnail" alt="avatar">
-                                                <div class="d-flex flex-column ps-2">
-                                                    <h6 class="fw-bold mb-0">Dan Short</h6>
-                                                    <span class="small text-muted">App Developer</span>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn light-danger-bg text-end" data-bs-toggle="modal" data-bs-target="#dremovetask">Remove</button>
+                                        <div class="progress" style="height: 10px;">
+                                            <div class="progress-bar light-success-bg" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
-                                        <div class="py-2 d-flex align-items-center border-bottom">
-
-                                            <div class="d-flex ms-2 align-items-center flex-fill">
-                                                <img src="assets/img/xs/avatar3.jpg" class="avatar lg rounded-circle img-thumbnail" alt="avatar">
-                                                <div class="d-flex flex-column ps-2">
-                                                    <h6 class="fw-bold mb-0">Jack Glover</h6>
-                                                    <span class="small text-muted">Ui/UX Designer</span>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn light-danger-bg text-end" data-bs-toggle="modal" data-bs-target="#dremovetask">Remove</button>
+                                    </div>
+                                    <div class="progress-count mb-3">
+                                        <div class="d-flex justify-content-between align-items-center mb-1">
+                                            <h6 class="mb-0 fw-bold d-flex align-items-center">Pruebas</h6>
+                                            <span class="small text-muted">01/05</span>
+                                        </div>
+                                        <div class="progress" style="height: 10px;">
+                                            <div class="progress-bar light-orange-bg" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-count mb-4">
+                                        <div class="d-flex justify-content-between align-items-center mb-1">
+                                            <h6 class="mb-0 fw-bold d-flex align-items-center">Solucionado</h6>
+                                            <span class="small text-muted">01/08</span>
+                                        </div>
+                                        <div class="progress" style="height: 10px;">
+                                            <div class="progress-bar bg-lightyellow" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
                                 </div>
-                            </div> <!-- .card: My Timeline -->
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Row End -->
+            </div><!-- Row End -->
         </div>
     </div>
 

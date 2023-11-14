@@ -19,7 +19,17 @@ export class TecnicoUpdateComponent implements OnInit {
     email: '',
     senha: '',
     perfis: [],
-    dataCriacao: ''
+    dataCriacao: '',
+    profile: {
+        id: 0,
+        email: '',
+        phone: '',
+        address: '',
+        resume: '',
+        birthDate: '',
+        tecnicoId: 0,
+        avatar: ''
+    }
   }
 
   nome: FormControl = new FormControl(null, Validators.minLength(3));

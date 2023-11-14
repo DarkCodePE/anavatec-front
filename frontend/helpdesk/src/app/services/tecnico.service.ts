@@ -1,8 +1,8 @@
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { API_CONFIG } from '../config/api.config';
 import { Observable } from 'rxjs';
-import {ProfileRequestDTO, Tecnico} from '../models/tecnico';
+import {Profile, ProfileRequestDTO, Tecnico, TecnicoState} from '../models/tecnico';
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +42,14 @@ export class TecnicoService {
     const params = new HttpParams()
         .set('id', id)
     return this.http.put(`${API_CONFIG.baseUrl}/profile`,data, {params});
+  }
+  uploadImage(file:File, email: string): Observable<Tecnico>{
+    let body = new FormData();
+    const blob = new Blob([email], { type: 'application/json' });
+    body.append("file",file);
+    body.append("email",blob);
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post<Tecnico>(`${API_CONFIG.baseUrl}/tecnicos/upload/avatar`,body, { headers: headers });
   }
 }

@@ -6,6 +6,7 @@ import {AuthService} from "../../services/auth.service";
 import {ToastrService} from "ngx-toastr";
 import {ChamadoService} from "../../services/chamado.service";
 import {ChamadoExpiredDTO} from "../../models/chamado";
+import {UserStore} from "../../store/user.store";
 
 @Component({
   selector: 'app-header',
@@ -21,6 +22,7 @@ export class HeaderComponent implements OnInit {
   constructor(private service: TecnicoService,
               private chamadoService: ChamadoService,
               private router: Router,
+              private userStore: UserStore,
               private authService: AuthService,
               private toast: ToastrService) { }
 
@@ -35,6 +37,12 @@ export class HeaderComponent implements OnInit {
       this.user = resp;
       this.name = this.user.nome.split(' ')[0];
       this.lastName = this.user.nome.split(' ')[1];
+      if (this.user.profile != null) {
+        let imageUrl = this.user.profile.avatar ?? '';
+        this.userStore.saveState(this.user, imageUrl);
+      }else {
+        this.userStore.saveState(this.user, '');
+      }
     });
   }
   LoadTicketExpired(){

@@ -48,7 +48,7 @@ export class ChamadoCreateComponent implements OnInit {
     private chamadoService: ChamadoService,
     private clienteService: ClienteService,
     private tecnicoService: TecnicoService,
-    private toastService: ToastrService,
+      private toastService: ToastrService,
     private router: Router 
   ) { }
 
