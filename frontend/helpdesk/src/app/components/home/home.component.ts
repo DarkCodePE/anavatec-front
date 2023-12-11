@@ -10,6 +10,10 @@ export type ChartOptions = {
   responsive: ApexResponsive[];
   labels: any;
 };
+export type ChartPieDTO= {
+  labels: [],
+  series: []
+}
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -19,6 +23,9 @@ export class HomeComponent implements OnInit {
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
   top: ChamadoTop;
+  totalTicketResolved: number;
+  totalTicketAssigned: number;
+  totalTicketCreated: number;
   constructor(private chamadoService: ChamadoService) {
     this.findTopTecnico();
     this.chartOptions = {
@@ -50,6 +57,41 @@ export class HomeComponent implements OnInit {
     });
   }
   ngOnInit(): void {
+    //total ticket resolved
+    this.chamadoService.getTicketResolved().subscribe(resp => {
+        this.totalTicketResolved = resp;
+    });
+    //total ticket assigned
+    this.chamadoService.getTicketUnresolved().subscribe(resp => {
+        this.totalTicketAssigned = resp;
+    });
+    //total ticket created
+    this.chamadoService.getTicketCreated().subscribe(resp => {
+        this.totalTicketCreated = resp;
+    });
+    //  chart/assigned
+    this.chamadoService.getChartAssigned().subscribe(resp => {
+        this.chartOptions = {
+            series: resp.series,
+            chart: {
+                width: 380,
+                type: "pie"
+            },
+            labels: resp.labels,
+            responsive: [
+                {
+                    breakpoint: 480,
+                    options: {
+                        chart: {
+                            width: 200
+                        },
+                        legend: {
+                            position: "bottom"
+                        }
+                    }
+                }
+            ]
+        };
+    });
   }
-
 }

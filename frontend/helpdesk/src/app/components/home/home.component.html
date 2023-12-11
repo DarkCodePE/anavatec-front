@@ -10,8 +10,8 @@
                             <div class="d-flex align-items-center">
                                 <div class="avatar lg  rounded-1 no-thumbnail bg-lightyellow color-defult"><mat-icon class="bi bi-journal-check fs-4">format_list_bulleted</mat-icon></div>
                                 <div class="flex-fill ms-4">
-                                    <div class="">Tareas en progreso</div>
-                                    <h5 class="mb-0 ">122</h5>
+                                    <div class="">Total tickets creados</div>
+                                    <h5 class="mb-0 ">{{ totalTicketCreated }}</h5>
                                 </div>
                                 <a href="task.html" title="view-members" class="btn btn-link text-decoration-none  rounded-1"><i class="icofont-hand-drawn-right fs-2 "></i></a>
                             </div>
@@ -24,8 +24,8 @@
                             <div class="d-flex align-items-center">
                                 <div class="avatar lg  rounded-1 no-thumbnail bg-lightblue color-defult"><mat-icon class="bi bi-list-check fs-4">checklist</mat-icon></div>
                                 <div class="flex-fill ms-4">
-                                    <div class="">Tareas completadas</div>
-                                    <h5 class="mb-0 ">376</h5>
+                                    <div class="">Total de tickets asignados</div>
+                                    <h5 class="mb-0 ">{{ totalTicketAssigned }}</h5>
                                 </div>
                                 <a href="task.html" title="space-used" class="btn btn-link text-decoration-none  rounded-1"><i class="icofont-hand-drawn-right fs-2 "></i></a>
                             </div>
@@ -38,8 +38,8 @@
                             <div class="d-flex align-items-center">
                                 <div class="avatar lg  rounded-1 no-thumbnail bg-lightgreen color-defult"><mat-icon class="bi bi-clipboard-data fs-4">emoji_objects</mat-icon></div>
                                 <div class="flex-fill ms-4">
-                                    <div class="">Soluciones</div>
-                                    <h5 class="mb-0 ">74</h5>
+                                    <div class="">Total de tickets solucionados</div>
+                                    <h5 class="mb-0 ">{{ totalTicketResolved }}</h5>
                                 </div>
                                 <a href="task.html" title="renewal-date" class="btn btn-link text-decoration-none  rounded-1"><i class="icofont-hand-drawn-right fs-2 "></i></a>
                             </div>
@@ -76,7 +76,7 @@
                                                     <img class="avatar lg rounded-circle img-thumbnail mx-auto" src="assets/img/lg/avatar2.jpg" alt="profile">
                                                     <h6 class="fw-bold my-2 small-14">{{data.nome}}</h6>
                                                     <span class="text-muted mb-2">{{data.email}}</span>
-                                                    <h4 class="fw-bold text-primary fs-3">{{ (data.quantidade / top.total) * 100 | number:'1.0-0' }} %</h4>
+                                                    <h4 class="fw-bold text-primary fs-3">{{ (data.quantidade / top.totalSolved) * 100 | number:'1.0-0' }} %</h4>
                                                 </div>
                                             </div>
                                         </div>

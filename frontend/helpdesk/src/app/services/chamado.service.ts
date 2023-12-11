@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import {Chamado, ChamadoExpiredDTO, ChamadoTop} from '../models/chamado';
 import { API_CONFIG } from '../config/api.config';
 import {Solution, SolutionState} from "../models/Product";
+import {ChartPieDTO} from "../components/home/home.component";
 
 @Injectable({
   providedIn: 'root'
@@ -43,4 +44,21 @@ export class ChamadoService {
     headers.append('Content-Type', 'application/json');
     return this.http.post<Solution[]>(`${API_CONFIG.baseUrl}/solution/create`, body, { headers: headers });
   }
+
+  //total ticket resolved
+    getTicketResolved(): Observable<number> {
+        return this.http.get<number>(`${API_CONFIG.baseUrl}/chamados/total/resolved`);
+    }
+  //total ticket assigned
+    getTicketUnresolved(): Observable<number> {
+        return this.http.get<number>(`${API_CONFIG.baseUrl}/chamados/total/assigned`);
+    }
+  //total ticket created
+    getTicketCreated(): Observable<number> {
+        return this.http.get<number>(`${API_CONFIG.baseUrl}/chamados/total/created`);
+    }
+    //  chart/assigned
+    getChartAssigned(): Observable<ChartPieDTO> {
+        return this.http.get<ChartPieDTO>(`${API_CONFIG.baseUrl}/chamados/chart/assigned`);
+    }
 }
