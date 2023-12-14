@@ -35,7 +35,7 @@
                         </div>
                         <div class="teacher-info border-start ps-xl-4 ps-md-4 ps-sm-4 ps-4 w-100">
                             <div class="d-flex justify-content-between ">
-                                <h6  class="mb-0 mt-2  fw-bold d-block fs-6">Orlando Kuan</h6>
+                                <h6  class="mb-0 mt-2  fw-bold d-block fs-6">{{(profile$ | async)?.nome}}</h6>
                                 <button (click)="OpenModal()"   class="full-width mat-elevation-z2" mat-raised-button color="primary" ><mat-icon>edit_note</mat-icon> Editar perfil</button>
                             </div>
                             <span class="py-1 fw-bold small-11 mb-0 mt-1 text-muted">Senior</span>
@@ -44,25 +44,25 @@
                                 <div class="col-xl-5">
                                     <div class="d-flex align-items-center">
                                         <mat-icon class="icofont-ui-touch-phone">phone_iphone</mat-icon>
-                                        <span class="ms-2 small">202-555-0174 </span>
+                                        <span class="ms-2 small">{{(profile$ | async)?.profile.phone}} </span>
                                     </div>
                                 </div>
                                 <div class="col-xl-5">
                                     <div class="d-flex align-items-center">
                                         <mat-icon class="icofont-email">mail</mat-icon>
-                                        <span class="ms-2 small">ryanogden@gmail.com</span>
+                                        <span class="ms-2 small">{{(profile$ | async)?.email}}</span>
                                     </div>
                                 </div>
                                 <div class="col-xl-5">
                                     <div class="d-flex align-items-center">
                                         <mat-icon class="icofont-birthday-cake">cake</mat-icon>
-                                        <span class="ms-2 small">19/03/1980</span>
+                                        <span class="ms-2 small">{{(profile$ | async)?.profile.birthDate}} </span>
                                     </div>
                                 </div>
                                 <div class="col-xl-5">
                                     <div class="d-flex align-items-center">
                                         <mat-icon class="icofont-address-book">home</mat-icon>
-                                        <span class="ms-2 small">2734  West Fork Street,EASTON 02334.</span>
+                                        <span class="ms-2 small">{{(profile$ | async)?.profile.address}}</span>
                                     </div>
                                 </div>
                             </div>
