@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Credenciais } from 'src/app/models/credenciais';
 import { AuthService } from 'src/app/services/auth.service';
+import {UserStore} from "../../store/user.store";
 
 @Component({
   selector: 'app-login',
@@ -24,6 +25,7 @@ export class LoginComponent implements OnInit {
   constructor(private toast: ToastrService,
               public formBuilder: FormBuilder,
     private service: AuthService,
+    private store: UserStore,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -40,6 +42,7 @@ export class LoginComponent implements OnInit {
   logar() {
     this.service.authenticate(this.loginFormGroup.value).subscribe({
       next: (v) => {
+        this.store.saveEmail(this.loginFormGroup.value.email);
         this.service.successfulLogin(v.headers.get('Authorization').substring(7));
         this.router.navigate([''])
       },

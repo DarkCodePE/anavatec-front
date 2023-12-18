@@ -1,6 +1,10 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {Observable} from "rxjs";
+import {TecnicoState} from "../../../../models/tecnico";
+import {UserStore} from "../../../../store/user.store";
+import {TecnicoService} from "../../../../services/tecnico.service";
 
 @Component({
   selector: 'app-perfil-create',
@@ -8,17 +12,20 @@ import {MAT_DIALOG_DATA} from "@angular/material/dialog";
   styleUrls: ['./perfil-create.component.css']
 })
 export class PerfilCreateComponent implements OnInit {
+  profile$:Observable<TecnicoState> = this.userStore.state$;
   profileFormGroup!: any;
   avatarFormGroup!: any;
   technicalId: number;
   file?:File |null;
   errorMessage: string = '';
   constructor(  public formBuilder: FormBuilder,
+                private service: TecnicoService,
+                private userStore: UserStore,
                 @Inject(MAT_DIALOG_DATA) public modalData: {
                   technicalId: number,
                 }) {
-            console.log(this.modalData.technicalId)
-            this.technicalId = this.modalData.technicalId;
+            //console.log(this.modalData.technicalId)
+            this.technicalId = this.userStore.stateValue.id;
   }
 
   ngOnInit(): void {
@@ -64,6 +71,17 @@ export class PerfilCreateComponent implements OnInit {
     this.avatarFormGroup = this.formBuilder.group({
       technicalId: [''],
       avatar: [''],
+    });
+  }
+
+  onSubmit() {
+    //crear perfil
+    this.profileFormGroup.get('technicalId').setValue(this.technicalId);
+    this.service.createProfile(this.profileFormGroup.value).subscribe(resp => {
+        if (resp) {
+            this.errorMessage = '';
+            this.userStore.saveProfile(resp);
+        }
     });
   }
 }

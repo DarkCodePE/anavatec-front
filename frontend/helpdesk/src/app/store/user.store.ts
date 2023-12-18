@@ -36,6 +36,15 @@ export class UserStore {
         }
         this.state.next(state);
     }
+    saveEmail(email: string) {
+        this.state.next({
+            ...this.stateValue,
+            profile: {
+                ...this.stateValue.profile,
+                email: email
+            }
+        });
+    }
     saveAvatar(avatar: string) {
         this.state.next({
             ...this.stateValue,
@@ -43,6 +52,12 @@ export class UserStore {
                 ...this.stateValue.profile,
                 avatar: avatar
             }
+        });
+    }
+    saveProfile(profile: Profile) {
+        this.state.next({
+            ...this.stateValue,
+            profile: profile
         });
     }
     get stateValue(): TecnicoState{

@@ -36,12 +36,12 @@ export class TecnicoService {
     return this.http.get(`${API_CONFIG.baseUrl}/profile?id=${userID}`);
   }
   createProfile(data: ProfileRequestDTO){
-    return this.http.post(`${API_CONFIG.baseUrl}/profile`,data);
+    return this.http.post<Profile>(`${API_CONFIG.baseUrl}/tecnicos/profile`,data);
   }
   updateProfile(data: ProfileRequestDTO, id: number){
     const params = new HttpParams()
         .set('id', id)
-    return this.http.put(`${API_CONFIG.baseUrl}/profile`,data, {params});
+    return this.http.put(`${API_CONFIG.baseUrl}/tecnicos/profile`,data, {params});
   }
   uploadImage(file:File, email: string): Observable<Tecnico>{
     let body = new FormData();

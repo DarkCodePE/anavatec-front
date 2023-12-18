@@ -26,7 +26,7 @@ export interface Profile {
     resume: string;
     birthDate: string;
     tecnicoId: number;
-    avatar: '';
+    avatar: string;
 }
 export interface TecnicoState {
     id?: any;
